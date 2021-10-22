@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Parking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Parking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <p>{{message}}</p>
+    <ion-item>
+      <ion-label class="bold">Registration</ion-label>
+      <ion-input [(ngModel)]="newParking.registration"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="bold">Hours</ion-label>
+      <ion-input [(ngModel)]="newParking.hours" type="number"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="calculateCharges();">Calculate charges</ion-button>
+    <ion-button (click)="resetCharges();">Reset</ion-button>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="bold">Registration</ion-col>
+        <ion-col class="bold">Hours</ion-col>
+        <ion-col class="bold">Charge</ion-col>
+        <ion-col class="bold">Running total</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let parking of parkings">
+        <ion-col>{{parking.registration}}</ion-col>
+        <ion-col>{{parking.hours}}</ion-col>
+        <ion-col>{{parking.charge}}</ion-col>
+        <ion-col>{{parking.runningTotal}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
